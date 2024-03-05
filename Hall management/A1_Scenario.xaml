@@ -12,39 +12,32 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="124*"/>
-            <RowDefinition Height="125*"/>
+            <RowDefinition Height="144*"/>
+            <RowDefinition Height="105*"/>
             <RowDefinition Height="455*"/>
         </Grid.RowDefinitions>
 
         <!-- Надписи -->
-        <TextBlock Text="Микрофоны" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,52,0,0" FontSize="22"/>
-        <TextBlock Text="Матрица на проектор" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,10,0,0" FontSize="22"/>
-        <TextBlock Text="Запись" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,10,0,0" FontSize="22"/>
+        <TextBlock Text="Матрица на проектор" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="22" Height="29" Width="222"/>
+        <TextBlock Text="Запись" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="22" Height="30" Width="70"/>
 
         <!-- Кнопки -->
         <!-- Микрофоны -->
-        <Button Content="Трибуна" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="195,45,0,0" Height="49" Width="80"/>
-        <Button Content="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="295,52,0,0" Height="34" Width="30"/>
-        <Button Content="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="340,52,0,0" Height="34" Width="30" />
-        <Button Content="3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="385,52,0,0" Height="34" Width="30"/>
-        <Button Content="4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="430,52,0,0" Height="34" Width="30"/>
-        <Button Content="5" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="475,52,0,0" Height="34" Width="30"/>
-        <Button Content="6" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="520,52,0,0" Height="34" Width="30"/>
         <!-- Продолжите аналогичным образом для остальных кнопок микрофонов -->
 
         <!-- Матрица -->
-        <Button Content="Операторская" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="290,50,0,0" Height="44"/>
-        <Button Content="ВКС" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="385,50,0,0" Height="44"/>
-        <Button Content="Презентация" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="420,50,0,0" Height="44"/>
+        <Button x:Name="Oper_button" Content="Операторская" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="290,0,0,0" Height="44" Width="82" Click="Oper_button_Click"/>
+        <Button x:Name="VCS_button" Content="ВКС" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="385,0,0,0" Height="44" Width="25" Click="VCS_button_Click"/>
+        <Button x:Name="Prez_button" Content="Презентация" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="420,0,0,0" Height="44" Width="76" Click="Prez_button_Click"/>
         <!-- Продолжите аналогичным образом для остальных кнопок матрицы -->
 
         <!-- Запись -->
-        <Button x:Name="StartButton" Content="Старт" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,47,0,0" Height="49" Width="50" Click="StartButton_Click"/>
-        <Button x:Name="StopButton" Content="Стоп" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="250,47,0,0" Height="49" Width="50" Click="StopButton_Click"/>
-        <Button x:Name="InfoButton" Content="Статус" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="340,47,0,0" Height="49" Width="50" Click="InfoButton_Click" Focusable="False"/>
+        <Button x:Name="StartButton" Content="Старт" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="160,0,0,0" Height="49" Width="50" Click="StartButton_Click"/>
+        <Button x:Name="StopButton" Content="Стоп" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="250,0,0,0" Height="49" Width="50" Click="StopButton_Click"/>
+        <Button x:Name="InfoButton" Content="Статус" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="340,0,0,0" Height="49" Width="50" Click="InfoButton_Click" Focusable="False"/>
         <!-- Окна браузера в четвертой строке -->
-        <WebBrowser Grid.Row="2" x:Name="webBrowser1" Grid.ColumnSpan="1" Margin="10" Source="http://192.168.110.212"/>
+        <WebBrowser Grid.Row="2" x:Name="webBrowser1" Grid.ColumnSpan="1" Margin="10,10,10,10" Source="http://192.168.110.212"/>
         <WebBrowser Grid.Row="2" x:Name="webBrowser2" Margin="0,10,0,10" HorizontalAlignment="Center" Grid.Column="1" Width="620" Source="http://admin@192.168.110.213"/>
+        <Button x:Name="Micbtn" Grid.RowSpan="2" Content="Управление микрофонами" FontSize="36" Click="Micbtn_Click"/>
     </Grid>
 </Window>

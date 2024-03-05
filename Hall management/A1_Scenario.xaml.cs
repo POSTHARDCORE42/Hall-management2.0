@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -24,12 +25,31 @@ namespace Hall_management
         private TcpClient recorderClient;
         private NetworkStream recorderStream;
         private bool isRecording;
+        
 
         public A1_Scenario()
         {
             InitializeComponent();
             ConnectToRecorder();
+            
 
+        }
+
+        private async Task SendTelnetCommandAsync(string command)
+        {
+            try
+            {
+                using (TcpClient client = new TcpClient("192.168.110.214", 23))
+                using (NetworkStream stream = client.GetStream())
+                {
+                    byte[] data = Encoding.ASCII.GetBytes(command);
+                    await stream.WriteAsync(data, 0, data.Length);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при отправке команды по Telnet: {ex.Message}");
+            }
         }
         private async void ConnectToRecorder()
         {
@@ -45,13 +65,10 @@ namespace Hall_management
                 MessageBox.Show($"Ошибка при подключении к рекордеру: {ex.Message}");
             }
         }
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            // Устанавливаем размер масштаба в процентах
-            double scalePercentage = 100; 
-            SetWebBrowserZoom(webBrowser1, scalePercentage);
-            SetWebBrowserZoom(webBrowser2, scalePercentage);
-        }
+
+        
+
+        
 
      
         private async void StartReading()
@@ -106,14 +123,7 @@ namespace Hall_management
                 MessageBox.Show($"Ошибка при отправке команды на рекордер: {ex.Message}");
             }
         }
-        private void SetWebBrowserZoom(WebBrowser webBrowser, double scalePercentage)
-        {
-            // Формируем скрипт для изменения масштаба страницы
-            string script = $"document.body.style.zoom = '{scalePercentage}%';";
-
-            // Выполняем скрипт внутри WebBrowser
-            webBrowser.InvokeScript("execScript", new Object[] { script, "JavaScript" });
-        }
+        
 
         private async void StartButton_Click(object sender, RoutedEventArgs e)
         {
@@ -141,8 +151,26 @@ namespace Hall_management
             }
         }
 
+        private void Micbtn_Click(object sender, RoutedEventArgs e)
+        {
+            string url = "http://192.168.110.225/chairman/microphonecontrol.cgi#";
+            Process.Start(url);
+        }
 
+        private async void Prez_button_Click(object sender, RoutedEventArgs e)
+        {
+            await SendTelnetCommandAsync("2*3%");
+        }
 
+        private async void VCS_button_Click(object sender, RoutedEventArgs e)
+        {
+            await SendTelnetCommandAsync("5*3%");
+        }
+
+        private async void Oper_button_Click(object sender, RoutedEventArgs e)
+        {
+            await SendTelnetCommandAsync("10*3%");
+        }
     }
 }
 
