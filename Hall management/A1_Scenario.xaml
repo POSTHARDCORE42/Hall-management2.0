@@ -40,9 +40,9 @@
         <!-- Продолжите аналогичным образом для остальных кнопок матрицы -->
 
         <!-- Запись -->
-        <Button Content="Старт" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,47,0,0" Height="49" Width="50"/>
-        <Button Content="Стоп" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="250,47,0,0" Height="49" Width="50"/>
-        <Button Content="Статус" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="340,47,0,0" Height="49" Width="50"/>
+        <Button x:Name="StartButton" Content="Старт" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,47,0,0" Height="49" Width="50" Click="StartButton_Click"/>
+        <Button x:Name="StopButton" Content="Стоп" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="250,47,0,0" Height="49" Width="50" Click="StopButton_Click"/>
+        <Button x:Name="InfoButton" Content="Статус" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="340,47,0,0" Height="49" Width="50" Click="InfoButton_Click" Focusable="False"/>
         <!-- Окна браузера в четвертой строке -->
         <WebBrowser Grid.Row="2" x:Name="webBrowser1" Grid.ColumnSpan="1" Margin="10" Source="http://192.168.110.212"/>
         <WebBrowser Grid.Row="2" x:Name="webBrowser2" Margin="0,10,0,10" HorizontalAlignment="Center" Grid.Column="1" Width="620" Source="http://admin@192.168.110.213"/>

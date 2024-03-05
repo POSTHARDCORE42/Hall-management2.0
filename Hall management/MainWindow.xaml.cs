@@ -28,7 +28,7 @@ namespace Hall_management
 
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Test ver. 00.01", "FAQ", MessageBoxButton.OK, MessageBoxImage.None);
+            MessageBox.Show("Test ver. 00.02", "FAQ", MessageBoxButton.OK, MessageBoxImage.None);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
